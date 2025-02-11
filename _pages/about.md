@@ -1,15 +1,15 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
-subtitle: Research Assistant in Computer Science at the University of Illinois at Urbana-Champaign.
+subtitle: Academic Visitor in Computer Science at the University of Illinois at Urbana-Champaign.
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>zhanrui3 [at] illinois.edu</p>
+    <p>zhanrui3[at]illinois[dot]edu</p>
     <p>Urbana, IL, 61801</p>
 
 selected_papers: false # includes a list of papers marked as "selected={true}"
