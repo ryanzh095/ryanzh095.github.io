@@ -2,7 +2,7 @@
 layout: page
 title: Gallery
 permalink: /gallery/
-description: A growing collection of your cool projects.
+description: Under Construction
 nav: true
 nav_order: 5
 display_categories: [work, fun]
