@@ -10,13 +10,30 @@
            Theme: Calm, Analytical, Scholarly
         */
         :root {
-            --bg-paper: #F2F4F6;         /* 月白 (Yuèbái) - Moon White: A very pale icy blue-white */
-            --text-ink: #1C2331;         /* 玄青 (Xuánqīng) - Deep dark indigo-black */
-            --accent-primary: #28527A;   /* 景泰蓝 (Jǐngtàilán) - Cloisonné / Indigo Blue */
-            --accent-secondary: #9C7A52; /* 秋茶 (Qiūchá) - Autumn Tea / Warm Ochre */
+            color-scheme: light;
+            --bg-paper: #eef7f2;
+            --text-ink: #2b333e;
+            --accent-primary: #144a74;
+            --accent-secondary: #8c4b31;
             --border-light: #D9E0E6;     /* Subtle porcelain border */
             --text-muted: #6F7B8A;       /* Muted blue-grey ink */
+            --surface-soft: rgba(40, 82, 122, 0.06);
+            --image-shadow: rgba(40, 82, 122, 0.08);
         }
+
+        html[data-theme="dark"] {
+            color-scheme: dark;
+            --bg-paper: #2c343f;
+            --text-ink: #F2F4F6;
+            --accent-primary: #94b4a6;
+            --accent-secondary: #e5d3aa;
+            --border-light: #314150;
+            --text-muted: #AAB6C3;
+            --surface-soft: rgba(143, 184, 216, 0.12);
+            --image-shadow: rgba(0, 0, 0, 0.32);
+        }
+
+
 
         /* Global Styles & Liubai (Generous Negative Space) */
         * {
@@ -31,12 +48,47 @@
             font-family: 'Georgia', 'Times New Roman', serif;
             line-height: 1.7;
             padding: 4rem 2rem;
-            transition: padding 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease, padding 0.3s ease;
         }
 
         .container {
             max-width: 900px;
             margin: 0 auto;
+        }
+
+        .theme-controls {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 0.75rem;
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            color: var(--accent-primary);
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+            width: 2rem;
+            height: 2rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.72;
+            padding: 0;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--surface-soft);
+            border-color: var(--accent-primary);
+            opacity: 1;
+        }
+
+        .theme-toggle:focus-visible {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 3px;
         }
 
         /* Header Style */
@@ -117,7 +169,7 @@
             font-style: italic;
             font-size: 0.9rem;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(40, 82, 122, 0.08); 
+            box-shadow: 0 4px 10px var(--image-shadow); 
             flex-shrink: 0; 
             margin-left: 2rem;
             margin-top: 0.25rem;
@@ -221,6 +273,11 @@
             body {
                 padding: 2rem 1.2rem; /* Maximize screen real estate on mobile */
             }
+
+            .theme-controls {
+                justify-content: center;
+                margin-bottom: 1rem;
+            }
             
             header {
                 flex-direction: column-reverse; /* Stacks image above text */
@@ -256,6 +313,10 @@
 <body>
 
     <div class="container">
+        <div class="theme-controls">
+            <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">☾</button>
+        </div>
+
         <!-- Header Zone -->
         <header>
             <div class="profile-title">
@@ -343,6 +404,34 @@
             <p>&copy; 2026 Zhanrui Zhang. &nbsp;|&nbsp; Last updated: June 2026</p>
         </footer>
     </div>
+
+    <script>
+        const themeToggle = document.querySelector('.theme-toggle');
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function setTheme(theme) {
+            document.documentElement.dataset.theme = theme;
+            const isDark = theme === 'dark';
+            const label = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+            themeToggle.textContent = isDark ? '☀' : '☾';
+            themeToggle.setAttribute('aria-label', label);
+            themeToggle.setAttribute('title', label);
+            themeToggle.setAttribute('aria-pressed', String(theme === 'dark'));
+        }
+
+        function setSystemTheme() {
+            setTheme(systemTheme.matches ? 'dark' : 'light');
+        }
+
+        setSystemTheme();
+
+        systemTheme.addEventListener('change', setSystemTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+            setTheme(nextTheme);
+        });
+    </script>
 
 </body>
 </html>
