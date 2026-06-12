@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zhanrui Zhang | Academic Profile</title>
+    <style>
+        /* 
+           Traditional Chinese Color Palette: Porcelain & Tea 
+           Theme: Calm, Analytical, Scholarly
+        */
+        :root {
+            --bg-paper: #F2F4F6;         /* 月白 (Yuèbái) - Moon White: A very pale icy blue-white */
+            --text-ink: #1C2331;         /* 玄青 (Xuánqīng) - Deep dark indigo-black */
+            --accent-primary: #28527A;   /* 景泰蓝 (Jǐngtàilán) - Cloisonné / Indigo Blue */
+            --accent-secondary: #9C7A52; /* 秋茶 (Qiūchá) - Autumn Tea / Warm Ochre */
+            --border-light: #D9E0E6;     /* Subtle porcelain border */
+            --text-muted: #6F7B8A;       /* Muted blue-grey ink */
+        }
+
+        /* Global Styles & Liubai (Generous Negative Space) */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-paper);
+            color: var(--text-ink);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.7;
+            padding: 4rem 2rem;
+            transition: padding 0.3s ease;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header Style */
+        header {
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 2.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .profile-title {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .profile-title h1 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            color: var(--text-ink);
+            margin-bottom: 0.25rem;
+            transition: font-size 0.3s ease;
+        }
+
+        .profile-title p {
+            font-size: 1.1rem;
+            color: var(--accent-primary);
+        }
+
+        .profile-title .school {
+            font-style: italic;
+            color: var(--accent-secondary);
+            font-size: 0.95rem;
+            margin-top: 0.2rem;
+        }
+
+        .profile-contact {
+            margin-top: 1.4rem;
+            display: grid;
+            gap: 0.35rem;
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            line-height: 1.6;
+        }
+
+        .profile-contact a {
+            color: var(--text-ink);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--text-muted);
+        }
+
+        .profile-contact a:hover {
+            color: var(--accent-primary);
+            border-bottom-color: var(--accent-primary);
+        }
+
+        .profile-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 1rem;
+            margin-top: 0.2rem;
+        }
+
+        /* Profile Picture Placeholder */
+        .profile-pic {
+            width: clamp(160px, 24vw, 220px);
+            aspect-ratio: 800 / 1000;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 2px solid var(--accent-secondary);
+            background-color: var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+            font-style: italic;
+            font-size: 0.9rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(40, 82, 122, 0.08); 
+            flex-shrink: 0; 
+            margin-left: 2rem;
+            margin-top: 0.25rem;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Section layout styling */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--text-ink);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Decorative left-bar */
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 3px;
+            height: 1.2rem;
+            background-color: var(--accent-secondary);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        #about a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+
+        /* Academic Items List (Pubs & Presentations) */
+        .academic-item {
+            border-left: 1px solid var(--border-light);
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .academic-item:hover {
+            border-left: 1.5px solid var(--accent-primary);
+        }
+
+        .item-title {
+            font-weight: bold;
+            color: var(--text-ink);
+            font-size: 1.05rem;
+            line-height: 1.4;
+        }
+
+        .item-meta {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+
+        .item-links {
+            margin-top: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .item-links a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .item-links a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: 6rem;
+            border-top: 1px solid var(--border-light);
+            padding-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* Responsive Mobile Optimizations */
+        @media (max-width: 600px) {
+            body {
+                padding: 2rem 1.2rem; /* Maximize screen real estate on mobile */
+            }
+            
+            header {
+                flex-direction: column-reverse; /* Stacks image above text */
+                align-items: center;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .profile-title h1 {
+                font-size: 2rem; /* Prevent long names from breaking awkwardly */
+            }
+
+            .profile-pic {
+                margin-left: 0; /* Remove desktop margin */
+                width: min(58vw, 220px);
+            }
+
+            p {
+                text-align: left; /* Justify text often looks strained on small screens */
+            }
+
+            .profile-contact {
+                justify-content: center;
+                justify-items: center;
+            }
+
+            .profile-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header Zone -->
+        <header>
+            <div class="profile-title">
+                <h1>Zhanrui Zhang</h1>
+                <p>Ph.D. Student in Computer Science</p>
+                <p class="school">University of Illinois, Urbana-Champaign</p>
+
+                <div class="profile-contact" id="contact">
+                    <div>zhanrui3[at]illinois.edu</div>
+                    <div>Room 4305, 201 N Goodwin Ave, Urbana, IL</div>
+                    <div class="profile-links">
+                        <a href="#" target="_blank">Google Scholar</a>
+                        <a href="https://github.com/ryanzh095" target="_blank">GitHub</a>
+                        <a href="https://linkedin.com/in/zhang4221095" target="_blank">LinkedIn</a>
+                        <a href="path-to-your-cv.pdf" target="_blank">CV</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Profile Picture -->
+            <!-- Use an 800x1000 portrait image here. CSS scales it without distortion. -->
+            <div class="profile-pic">
+                <img src="headshot.jpg" width="800" height="1000" alt="Zhanrui Zhang headshot">
+            </div>
+        </header>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About</h2>
+            <p>
+                Hello! I'm Zhanrui (Ryan) Zhang, a second-year Ph.D. student in Computer Science at the University of Illinois at Urbana-Champaign (UIUC). I work in the Laboratory for Parallel Numerical Algorithms (<a href="https://lpna.cs.illinois.edu/" target="_blank">LPNA</a>), where I am incredibly grateful to be advised by <a href="https://solomonik.cs.illinois.edu/" target="_blank">Prof. Edgar Solomonik</a>.
+                My research broadly focuses on scientific computing and numerical linear algebra. Specifically, I am interested in tensor computations and its applications. Currently, my work involves developing low-rank solvers for high-dimensional kinetic PDEs. 
+                Prior to my doctoral studies, I earned my Master of Computer Science here at UIUC, and my B.Eng. from ShanghaiTech University.
+            </p>
+        </section>
+
+        <!-- Publications Section -->
+        <!-- <section id="publications">
+            <h2>Publications</h2>
+            
+            <div class="academic-item">
+                <div class="item-title">On the Convergence Bounds of Stochastic Gradient Descent in Non-Convex Settings</div>
+                <div class="item-meta"><strong>[Your Name]</strong>, Co-author Name. <em>Conference on Neural Information Processing Systems (NeurIPS)</em>, 2025.</div>
+                <div class="item-links">
+                    <a href="#">[arXiv]</a>
+                    <a href="#">[Code]</a>
+                    <a href="#">[Poster]</a>
+                </div>
+            </div>
+
+            <div class="academic-item">
+                <div class="item-title">Spectral Graph Theory Applications in High-Dimensional Clustering</div>
+                <div class="item-meta"><strong>[Your Name]</strong>, Advisor Name. <em>SIAM Journal on Computing (SICOMP)</em>, 2024.</div>
+                <div class="item-links">
+                    <a href="#">[PDF]</a>
+                    <a href="#">[Project Page]</a>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Presentations Section -->
+        <section id="presentations">
+            <h2>Presentations</h2>
+            
+            <div class="academic-item">
+                <div class="item-title">Low-rank CP Tensor Compression and Its Application to high-dimensional PDEs</div>
+                <div class="item-meta"><em>SIAM Conference on Parallel Processing for Scientific Computing (PP26)</em>. Berlin, Germany. March 2026.</div>
+                <!-- <div class="item-links">
+                    <a href="#">[Slides]</a>
+                </div> -->
+            </div>
+
+            <div class="academic-item">
+                <div class="item-title">Low-rank CP Tensor Compression and Its Application to high-dimensional PDEs</div>
+                <div class="item-meta"><em>27th Conference of the International Linear Algebra Society (ILAS 2026)</em>. Blacksburg, VA. May 2026.</div>
+                <!-- <div class="item-links">
+                    <a href="#">[Slides]</a>
+                </div> -->
+            </div>
+
+        </section>
+
+        <!-- Minimalist Footer -->
+        <footer>
+            <p>&copy; 2026 Zhanrui Zhang. &nbsp;|&nbsp; Last updated: June 2026</p>
+        </footer>
+    </div>
+
+</body>
+</html>
